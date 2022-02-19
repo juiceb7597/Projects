@@ -127,8 +127,8 @@ nat 생성
 
 #참고 강의
 https://www.udemy.com/course/python-django-2021-complete-course/                               -Django
-https://www.udemy.com/course/aws-elastic-beanstalk-master-class/                                    -Beanstalk
-https://www.udemy.com/course/terraform-on-aws-with-sre-iac-devops-real-world-demos/      -Terraform
+https://www.udemy.com/course/aws-elastic-beanstalk-master-class/                               -Beanstalk
+https://www.udemy.com/course/terraform-on-aws-with-sre-iac-devops-real-world-demos/            -Terraform
 
 
 
