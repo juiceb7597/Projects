@@ -79,8 +79,7 @@ Ec2 콘솔 - 로드밸런서 - 리스너 http:80 편집 - 기본 작업 - 리디
 
 
 
-(참고용)
-vpc 구성도
+#vpc 구성도
 
 vpc 생성
 이름     cider
@@ -121,6 +120,15 @@ nat 생성
                          'private-1a-database'
 'jp-private-1c-routes'   'private-1c-instance'     
                          'private-1c-database'
+
+
+
+
+
+#참고 강의
+https://www.udemy.com/course/python-django-2021-complete-course/                               -Django
+https://www.udemy.com/course/aws-elastic-beanstalk-master-class/                                    -Beanstalk
+https://www.udemy.com/course/terraform-on-aws-with-sre-iac-devops-real-world-demos/      -Terraform
 
 
 
