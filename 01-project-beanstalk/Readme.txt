@@ -82,11 +82,11 @@ Ec2 콘솔 - 로드밸런서 - 리스너 http:80 편집 - 기본 작업 - 리디
 #vpc 구성도
 
 vpc 생성
-이름     cider
+이름     cidr
 'jp-vpc' 10.0.0.0/16
 
 subnet 생성('jp-vpc')
-이름                    cider         region
+이름                    cidr         region
 'public-1a-elb'         10.0.10.0/24  ap-northeast-1a
 'public-1c-elb'         10.0.20.0/24  ap-northeast-1c
 'private-1a-instance'   10.0.30.0/24  ap-northeast-1a
@@ -104,7 +104,7 @@ nat 생성
 'nat-1c-gw'  'public-1c-elb'에 연결 , EIP할당
 
 라우팅 테이블 생성
-이름                     대상        cider
+이름                     대상        cidr
 'jp-public-routes'       'local'     10.0.0.0/16
                          'jp-igw'    0.0.0.0/0
 'jp-private-1a-routes'   'local'     10.0.0.0/16
