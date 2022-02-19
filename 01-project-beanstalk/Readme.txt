@@ -14,7 +14,7 @@ line 203-205. S3버킷 설정
 projects/management/commands/createsu.py
 line 8-9. superuser 설정
 
-devsearch 내 모든 파일을 django.zip으로 압축
+devsearch-project 내 모든 파일을 django.zip으로 압축
 
 
 
