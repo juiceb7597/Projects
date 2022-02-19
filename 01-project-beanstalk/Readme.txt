@@ -5,7 +5,7 @@
 
 1.Django 설정
 
-devsearch-projects/에서 진행
+devsearch-project/에서 진행
 desearch/setting.py
 line 16. 허용 주소 설정
 line 181-182. 이메일 설정
