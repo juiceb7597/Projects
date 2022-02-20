@@ -37,3 +37,16 @@ vpc구성도.jpg
 vpc구성도입니다.
 
 
+
+
+devsearch-project
+
+Django 폴더입니다.
+
+
+
+vpcTerraform
+
+vpc용 .tf폴더입니다.
+
+
