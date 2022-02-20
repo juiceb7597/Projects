@@ -21,3 +21,14 @@ Http to Https redirection 으로 구성되어 있습니다.
 
 
 
+bluprint.jpg
+
+청사진입니다.
+
+
+
+
+vpc구성도.jpg
+
+vpc구성도 입니다.
+
