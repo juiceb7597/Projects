@@ -19,14 +19,14 @@ devsearch-project 내 모든 파일을 django.zip으로 압축
 
 
 
-2.vpc 구성
+2.VPC 구성
 
-terraformVPC/에서 terraform 사용
-
-
+terraformVPC/ 에서 terraform 사용
 
 
-3.Beanstalk 배포 설정
+
+
+3.Beanstalk 배포
 
 새 환경 생성
 웹 서버 환경
@@ -61,13 +61,13 @@ RDS_PORT = 5432
 4.Route 53 (Optional)
 도메인 등록 
 등록된 도메인으로 호스팅 영역 생성
-레코드 생성 - 단순 레코드 정의 - 레코드 이름 www- 레코드 영역 A 
--엔트포인트 Beanstalk 별칭 - 도쿄 리전 - 환경 선택 -단순 레코드 정의 
+레코드 생성 - 단순 레코드 정의 - 레코드 이름 www - 레코드 영역 A -
+엔트포인트 Beanstalk 별칭 - 도쿄 리전 - 환경 선택 -단순 레코드 정의 
 
 
 
 
-5.Http to https Redirection (Optional)
+5.Http to https redirection (Optional)
 Certificatre manager - 인증서 요청 - 퍼블릭 인증서 요청
 - 완전히 정규화된 도메인 이름 *.YourRoute53DomainName
 - 요청 - 인증서 ID 클릭 - 도메인 - Route53에서 레코드 생성
