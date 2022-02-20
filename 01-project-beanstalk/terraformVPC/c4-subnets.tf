@@ -1,10 +1,3 @@
-resource "aws_vpc" "jp-vpc" {
-  cidr_block = "10.0.0.0/16"
-  tags = {
-    Name = "jp-vpc"
-  }
-}
-
 resource "aws_subnet" "public-1a-elb" {
   vpc_id = aws_vpc.jp-vpc.id
   cidr_block = "10.0.10.0/24"
