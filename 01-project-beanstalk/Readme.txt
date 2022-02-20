@@ -20,7 +20,7 @@ Http to Https redirection 으로 구성되어 있습니다.
 
 02-참고강의.txt
 
-참고한 강의들의 url입니다.
+참고한 강의의 url입니다.
 
 
 
