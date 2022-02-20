@@ -45,7 +45,7 @@ Django 폴더입니다.
 
 
 
-vpcTerraform
+terraformVPC
 
 vpc용 .tf폴더입니다.
 
