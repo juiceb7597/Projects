@@ -30,5 +30,5 @@ bluprint.jpg
 
 vpc구성도.jpg
 
-vpc구성도 입니다.
+vpc구성도입니다.
 
