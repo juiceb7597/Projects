@@ -16,12 +16,15 @@ Twitter Streaming 데이터를 분석하고 시각화 하기
 
    Firehose를 통해 데이터를 S3 버킷에 저장합니다.
 
-   S3 버킷 ObjectCreated 트리거가 적용된 Lambda로 데이터를 가져옵니다. Comprehend API로 구문을 분석 후 각각 Firehose로 보냅니다.
+   S3 트리거로 Lambda를 실행합니다.
+   
+   Lambda는 S3에서 데이터를 가져오고 Comprehend API로 구문을 분석 후 각각 Firehose로 보냅니다.
 
-   Lambda에서 받은 'entities', 'sentiment', 'tweets' 데이터를 Glue Table을 지정하여
-   Parquet형태로 변환 후 Snappy로 압축합니다. 그런 다음 접두사된 폴더로 S3 버킷에 보냅니다.
+   Lambda에서 받은 'entities', 'sentiment', 'tweets' 데이터를 Firehose에서 받습니다.
 
-   S3에 저장된 데이터를 Athena로 쿼리합니다.
+   Glue Table을 지정하고 Parquet형태로 변환 후 Snappy로 압축합니다. 입력된 접두사 폴더로 S3 버킷에 보냅니다.
+
+   S3에 저장된 데이터를 Athena로 쿼리하여 분석합니다.
 
    Athena에 저장된 테이블로 Quicksight 데이터셋을 만든 뒤 원하는 형태로 시각화합니다.
 
