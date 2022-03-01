@@ -56,7 +56,7 @@ config.ini 파일에 입력 후 저장합니다.
    
   ![Alt text](./images/terraform-s3-bucket-var.jpg)
 
-  배포 전 몇 가지 변수 값을 설정합니다.
+  배포 전 몇 가지 변수 값을 수정합니다.
   
   01-2-s3-variables.tf 에서 위에 표시된 default 값을 변경합니다. 유니크한 s3 버킷 이름을 입력합니다.
 
@@ -81,7 +81,7 @@ config.ini 파일에 입력 후 저장합니다.
 <br/>
 <br/>
 
-###  5. Athena에서 쿼리
+###  5. Athena에서 분석
    <br/>
    
    ![Alt text](./images/athena.jpg)
