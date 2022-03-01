@@ -135,5 +135,3 @@ https://www.udemy.com/course/data-engineering-using-aws-analytics-services/
 https://aws.amazon.com/jp/builders-flash/202009/twitter-timeline-analysis/
 
 그 외 공식 Documentation
-<br/>
-<br/>
