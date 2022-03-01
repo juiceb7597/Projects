@@ -5,13 +5,14 @@ Twitter Streaming 데이터를 분석하고 시각화 하기
 
 ---
 <br/>
-1. 아키텍쳐
+
+### 1. 아키텍쳐
    
    <br/>
 
    ![Alt text](./images/architecture.jpg)
 
-   트위터 API로 실시간 데이터를 읽어들입니다.
+   트위터 API로 실시간 데이터를 가져옵니다.
 
    Firehose를 통해 데이터를 S3 버킷에 저장합니다.
 
@@ -29,7 +30,9 @@ Twitter Streaming 데이터를 분석하고 시각화 하기
 <br/>
 <br/>
 <br/>
-1. TwitterAPI용 Credential 생성
+
+###  2. TwitterAPI용 Credential 생성
+   <br/>
    
    ![Alt text](./images/twitter-developer-credentials.jpg)
 <br/>
@@ -47,7 +50,9 @@ config.ini 파일에 입력 후 저장합니다.
 <br/>
 <br/>
 <br/>
-3. terraform 배포
+
+###  3. Terraform 배포
+   <br/>
    
   ![Alt text](./images/terraform-s3-bucket-var.jpg)
 
@@ -62,7 +67,9 @@ config.ini 파일에 입력 후 저장합니다.
 <br/>
 <br/>
 <br/>
-4. TwitterAPI 실행
+
+###  4. TwitterAPI 실행
+   <br/>
    
    ![Alt text](./images/twitterAPIStreaming.jpg)
 
@@ -73,7 +80,9 @@ config.ini 파일에 입력 후 저장합니다.
 <br/>
 <br/>
 <br/>
-5. Athena에서 쿼리
+
+###  5. Athena에서 쿼리
+   <br/>
    
    ![Alt text](./images/athena.jpg)
 
@@ -88,7 +97,9 @@ config.ini 파일에 입력 후 저장합니다.
 <br/>
 <br/>
 <br/>
-6. Quicksight에서 시각화
+
+###  6. Quicksight에서 시각화
+   <br/>
    
    ![Alt text](./images/quicksight2.jpg)
 
