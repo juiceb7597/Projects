@@ -1,7 +1,7 @@
 Twitter Streaming 데이터를 분석하고 시각화 하기
 =============
 ---
-![Alt text](/images/quicksight.jpg)
+![Alt text](./images/quicksight.jpg)
 
 ---
 <br/>
@@ -9,7 +9,7 @@ Twitter Streaming 데이터를 분석하고 시각화 하기
    
    <br/>
 
-   ![Alt text](/images/architecture.jpg)
+   ![Alt text](./images/architecture.jpg)
 
    트위터 API로 실시간 데이터를 읽어들입니다.
 
@@ -31,7 +31,7 @@ Twitter Streaming 데이터를 분석하고 시각화 하기
 <br/>
 1. TwitterAPI용 Credential 생성
    
-   ![Alt text](/images/twitter-developer-credentials.jpg)
+   ![Alt text](./images/twitter-developer-credentials.jpg)
 <br/>
   
 https://developer.twitter.com/en Twitter Developer에서 회원가입을 합니다.
@@ -40,7 +40,7 @@ https://developer.twitter.com/en Twitter Developer에서 회원가입을 합니�
 <br/>
 <br/>
 
-  ![Alt text](/images/config_init.jpg)
+  ![Alt text](./images/config_init.jpg)
 
 config.ini 파일에 입력 후 저장합니다.
 <br/>
@@ -49,7 +49,7 @@ config.ini 파일에 입력 후 저장합니다.
 <br/>
 3. terraform 배포
    
-  ![Alt text](/images/terraform-s3-bucket-var.jpg)
+  ![Alt text](./images/terraform-s3-bucket-var.jpg)
 
   배포 전 몇 가지 변수 값을 설정합니다.
   
@@ -64,7 +64,7 @@ config.ini 파일에 입력 후 저장합니다.
 <br/>
 4. TwitterAPI 실행
    
-   ![Alt text](/images/twitterAPIStreaming.jpg)
+   ![Alt text](./images/twitterAPIStreaming.jpg)
 
    twitterAPIStreaming.py 내 검색할 keywords 설정 후 실행
 
@@ -75,7 +75,7 @@ config.ini 파일에 입력 후 저장합니다.
 <br/>
 5. Athena에서 쿼리
    
-   ![Alt text](/images/athena.jpg)
+   ![Alt text](./images/athena.jpg)
 
   (Firehose 기본 버퍼 5분으로 설정되어 있습니다.)
 
@@ -90,7 +90,7 @@ config.ini 파일에 입력 후 저장합니다.
 <br/>
 6. Quicksight에서 시각화
    
-   ![Alt text](/images/quicksight2.jpg)
+   ![Alt text](./images/quicksight2.jpg)
 
    Source로 Athena를 선택한 뒤 데이터셋을 만듭니다.
 
@@ -100,7 +100,7 @@ config.ini 파일에 입력 후 저장합니다.
 
 <br/>
 
-   ![Alt text](/images/quicksight.jpg)
+   ![Alt text](./images/quicksight.jpg)
 
 인사이트를 얻어봅시다!
 <br/>
