@@ -116,3 +116,14 @@ config.ini 파일에 입력 후 저장합니다.
 인사이트를 얻어봅시다!
 <br/>
 <br/>
+<br/>
+<br/>
+참고강의
+https://www.udemy.com/course/tweepy-twitter-python/
+https://www.udemy.com/course/mastering-boto3-with-aws-services/
+https://www.udemy.com/course/terraform-on-aws-with-sre-iac-devops-real-world-demos/
+https://www.udemy.com/course/aws-data-analytics/
+https://www.udemy.com/course/data-engineering-using-aws-analytics-services/
+
+참고 사이트
+https://aws.amazon.com/jp/builders-flash/202009/twitter-timeline-analysis/
