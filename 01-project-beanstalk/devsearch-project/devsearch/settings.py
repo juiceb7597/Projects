@@ -11,8 +11,8 @@ SECRET_KEY = 'django-insecure--4iws!uc#2j2cwb2llj!)k&lw3=+zy^2cxqrdj2h=nai8eiq*8
 DEBUG = True
 
 #허용 주소
-# Beanstalk URL은 환경 생성 시 '임의 도메인.ap-northeast-1.elasticbeanstalk.com'로
-# 생성되니 넣을 값을 미리 설정. 예)test-django-project.ap-northeast-1.elasticbeanstalk.com
+# Beanstalk URL은 환경 생성 시 '임의 도메인.ap-northeast-1.elasticbeanstalk.com'로 생성되니 넣을 값을 미리 설정합니다.
+# 예)test-django-project.ap-northeast-1.elasticbeanstalk.com
 ALLOWED_HOSTS = ['localhost', '127.0.0.1','YourBeanstalkDomain.ap-northeast-1.elasticbeanstalk.com','.YourRoute53Domain.com']
 
 x="10.0.30."
@@ -119,7 +119,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'devsearch.wsgi.application'
 
 #데이터베이스 환경설정
-#Beanstalk 내 환경 변수 설정으로 자동으로 값이 입력됩니다. leave it
+#Beanstalk 내 환경 변수 설정으로 자동으로 값이 입력됩니다.
 if 'RDS_HOSTNAME' in os.environ:
     DATABASES = {
         'default': {
