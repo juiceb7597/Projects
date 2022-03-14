@@ -11,7 +11,7 @@ SECRET_KEY = 'django-insecure--4iws!uc#2j2cwb2llj!)k&lw3=+zy^2cxqrdj2h=nai8eiq*8
 DEBUG = True
 
 #허용 주소
-# Beanstalk URL은 환경 생성 시 '임의 도메인.ap-northeast-1.elasticbeanstalk.com'로 생성되니 넣을 값을 미리 설정합니다.
+# Beanstalk URL은 환경 생성 시 '임의 도메인.ap-northeast-1.elasticbeanstalk.com'로 생성되니 넣을 값을 미리 설정해요.
 # 예)test-django-project.ap-northeast-1.elasticbeanstalk.com
 ALLOWED_HOSTS = ['localhost', '127.0.0.1','YourBeanstalkDomain.ap-northeast-1.elasticbeanstalk.com','.YourRoute53Domain.com']
 
@@ -173,13 +173,13 @@ USE_TZ = True
 CORS_ALLOW_ALL_ORIGINS = True
 
 # 알림받을 이메일 설정
-# google계정에서 - 보안 수준이 낮은 앱에 대한 액세스가 허용
+# google계정에서 - 보안 수준이 낮은 앱에 대한 액세스 허용
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'YourEmail@gmail.com'
-EMAIL_HOST_PASSWORD = 'YourEmailPassword' #이후 앱 엑세스용 비밀번호 사용
+EMAIL_HOST_PASSWORD = 'YourAppAccessPassword'
 
 
 STATIC_URL = '/static/'
