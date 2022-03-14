@@ -1,7 +1,7 @@
 Beanstalk으로 고가용성 Django 웹 애플리케이션 배포하기
 =============
 ---
-![Alt text](./images/devsearch.jpg)
+![Alt text](./images/devsearch.JPG)
 
 ![Alt text](./images/beanstalk-main.jpg)
 
@@ -144,7 +144,7 @@ Beanstalk 콘솔에서 환경을 생성해요.
    <br/>
    
    
-   ![Alt text](./images/beanstalk_RDS_var.jpg)
+   ![Alt text](./images/beanstalk_RDS_var.JPG)
 
    RDS를 Django와 연결해요.
 
@@ -194,7 +194,7 @@ Route53에서 도메인에 호스팅해요.
    <br/>
    
    
-   ![Alt text](./images/certificate_manager.jpg)
+   ![Alt text](./images/certificate_manager.JPG)
 
    certificate manager에서 인증서를 요청해요.
 
@@ -211,7 +211,7 @@ Route53에서 도메인에 호스팅해요.
 <br/>
 <br/>
 
-![Alt text](./images/devsearch.jpg)
+![Alt text](./images/devsearch.JPG)
 
 Beanstalk으로 고가용성 Django 웹 애플리케이션 배포에 성공했어요!!
 
