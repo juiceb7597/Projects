@@ -198,7 +198,7 @@ def athena_query_group():
 
    ![Alt text](./images/airflow_gragh.jpg)
 
-   ![Alt text](./images/slack_notification.jpg)
+   ![Alt text](./images/slack_notification.JPG)
 
    짜잔~ 멋진 3번째 프로젝트가 완성되었어요!
 
