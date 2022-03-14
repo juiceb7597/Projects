@@ -87,7 +87,7 @@ class Command(BaseCommand):
    <br/>
    <br/>
 
-   devsearch-project/ 에서 모든 파일을 django.zip으로 압축해요.
+   devsearch-project 폴더에서 모든 파일을 django.zip으로 압축해요.
 <br/>
 <br/>
 <br/>
