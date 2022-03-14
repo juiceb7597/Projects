@@ -198,11 +198,11 @@ Route53에서 도메인에 호스팅해요.
    <br/>
    
    
-   ![Alt text](./images/certificate_manager.JPG)
+   ![Alt text](./images/certificate_manager.jpg)
 
    certificate manager에서 인증서를 요청해요.
 
-   ![Alt text](./images/beanstalk_alb.jpg)
+   ![Alt text](./images/beanstalk_alb.JPG)
 
    구성 - 로드밸런서 - 리스너에 https를 추가해요.
 
