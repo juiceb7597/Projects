@@ -3,23 +3,22 @@ import boto3
 import os
 import re
 
-# Boto3 s3.Object용 resource 지정
+# Boto3 s3.Object용 resource
 s3 = boto3.resource('s3')
-# Boto3 Comprehend, Fireghose client 지정
+# Boto3 Comprehend, Fireghose client
 comprehend = boto3.client('comprehend')
 firehose = boto3.client('firehose')
-
+# 엔티티용 정규표현식 digit, #, @ 시작-종료
 entity_should_be_filtered = re.compile('^[\d#@]$')
 # 람다 핸들러
 def lambda_handler(event, context):
     print(event)
-    # 람다 핸들러 Records에 트리거 된 s3버킷 이름과 key 갖고오기
+    # 람다 핸들러 Records에 트리거 된 s3버킷 이름과 파일이름 갖고오기
     for record in event['Records']:
         s3_bucket = record['s3']['bucket']['name']
         s3_key = record['s3']['object']['key']
-        # Boto3 s3.Object
         obj = s3.Object(s3_bucket, s3_key)
-        # 'Body'값을 read로 bytes 반환, utf-8로 디코드 후 str 반환
+        # 'Body'값을 read로 읽고 bytes 반환, utf-8로 디코드 후 str 반환
         tweets_as_string = obj.get()['Body'].read().decode('utf-8') 
         #'\n'으로 분리된 걸 ','로 치환, list 반환
         tweets = tweets_as_string.split('\n')
@@ -27,7 +26,7 @@ def lambda_handler(event, context):
         for tweet_string in tweets:
             if len(tweet_string) < 1:
                 continue
-            # list된 json을 파이썬 객체 dic으로 반환 - 역직렬화
+            # list된 걸 json형식의 dic으로 반환
             tweet = json.loads(tweet_string)
             # 가져올 데이터 - tweets
             tweets_record = {
@@ -51,19 +50,19 @@ def lambda_handler(event, context):
             firehose.put_record(
                 DeliveryStreamName=os.environ['TWEETS_STREAM'],
                 Record={
-                    # dic을 json형식의 str로 변환 후 저장 - 직렬화
+                    # dic을 json형식의 str로 변환 후 저장
                     'Data': json.dumps(tweets_record) + '\n'
                 }
             )
             # Cloudwatch Log 확인용
             print(tweets_record)
-            # Boto3 Comprehend 중 detect_sentiment
+            # Boto3 Comprehend - detect_sentiment 요청 구문
             sentiment_response = comprehend.detect_sentiment(
                 Text=tweet['text'],
                 LanguageCode=tweet['lang']
                 )
             
-            # 가져올 데이터 - sentiment
+            # 가져올 데이터 - sentiment return 값
             sentiment_record = {
                 'id': tweet['id'],
                 'text': tweet['text'],
@@ -77,26 +76,26 @@ def lambda_handler(event, context):
             firehose.put_record(
                 DeliveryStreamName=os.environ['SENTIMENT_STREAM'],
                 Record={
-                    # dic을 json형식의 str로 변환 후 저장 - 직렬화
+                    # dic을 json형식의 str로 변환 후 저장
                     'Data': json.dumps(sentiment_record) + '\n'
                 }
             )
             # Cloudwatch Log 확인용
             print(sentiment_response)
-            # detect_entities 요청 구문. 검사할 text(uft-8 문자열)과 랭귀지코드 
+            # detect_entities 요청 구문
             entities_response = comprehend.detect_entities(
                     Text=tweet['text'],
                     LanguageCode=tweet['lang']
                 )
+             # Cloudwatch Log 확인용
             print(entities_response)
-             # Boto3 Comprehend 중 detect_Entities
+            # 가져올 데이터 - detect_entities return 값
             seen_entities = []
-            # detect_entities의 return 값 'Entities'"
             for entity in entities_response['Entities']:
                 # 숫자0-9,#,@ 1글자 엔티티 제외
                 if (entity_should_be_filtered.match(entity['Text'])):
                     continue
-
+                # 중복 제거
                 id = entity['Text'] + '-' + entity['Type']
                 if (id in seen_entities) == False:
                     entity_record = {
@@ -105,14 +104,14 @@ def lambda_handler(event, context):
                         'type': entity['Type'],
                         'score': entity['Score']
                     }
+                    seen_entities.append(id)
                     # Boto3 Firehose 대상 지정 - entities
                     firehose.put_record(
                         DeliveryStreamName=os.environ['ENTITY_STREAM'],
                         Record={
-                            # dic을 json형식의 str로 변환 후 저장 - 직렬화
+                            # dic을 json형식의 str로 변환 후 저장
                             'Data': json.dumps(entity_record) + '\n'
                         }
                     )
-                    seen_entities.append(id)
 
     return 'true'

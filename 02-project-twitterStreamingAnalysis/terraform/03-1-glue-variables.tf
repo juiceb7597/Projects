@@ -9,7 +9,6 @@ variable "tweets_tweets_table_name" {
   default = "tweets"
 }
 # Glue 테이블 S3 Path - tweets
-# 변경 필요
 variable "tweets_tweets_compressed_s3_name" {
   type = string
   default = "s3://twitter-streaming-compressed-juiceb/tweets/"
@@ -20,7 +19,6 @@ variable "tweets_entities_table_name" {
   default = "tweet_entities"
 }
 # Glue 테이블 S3 Path - entities
-# 변경 필요
 variable "tweets_entities_s3_location" {
   type = string
   default = "s3://twitter-streaming-compressed-juiceb/entities/"
@@ -31,7 +29,6 @@ variable "tweets_sentiment_table_name" {
   default = "tweet_sentiment"
 }
 # Glue 테이블 S3 Path - sentiment
-# 변경 필요
 variable "tweets_sentiment_s3_location" {
   type = string
   default = "s3://twitter-streaming-compressed-juiceb/sentiment/"

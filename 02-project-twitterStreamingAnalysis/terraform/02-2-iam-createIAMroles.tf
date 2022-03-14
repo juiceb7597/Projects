@@ -45,7 +45,7 @@ resource "aws_iam_role_policy" "firehose-policy" {
             ]})
 }
 
-# Firehose 생성 시 s3bucket role_ARN용 역할
+# Firehose 생성 시 s3bucket role_ARN용
 resource "aws_iam_role" "firehose-role" {
   name = var.firehose-role
   assume_role_policy = jsonencode(
