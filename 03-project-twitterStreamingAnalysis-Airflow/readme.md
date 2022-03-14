@@ -34,7 +34,7 @@ Airflow로 workflow를 스케쥴링하고 자동화하기
 
   docker로 Airflow를 설치해요
   
-  woker 컨테이너에서 작업을 진행해요
+  worker 컨테이너에서 작업을 진행해요
 
    ```
   settings/settings.sh
