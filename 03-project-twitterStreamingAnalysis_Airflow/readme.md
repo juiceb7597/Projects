@@ -80,7 +80,7 @@ rm -rf /opt/airflow/settings/awscliv2.zip
 
    ![Alt text](./images/variables_slack_channel.jpg)
 
-   Variables에서 slack_channel - chennal명을 입력해요.
+   Variables에서 slack_channel - channel명을 입력해요.
 
    ![Alt text](./images/aws_conn.jpg)
 
@@ -94,7 +94,7 @@ rm -rf /opt/airflow/settings/awscliv2.zip
 
    Password = Slack의 WebHook URL 을 입력해요.
    
-   ex)/T0******/B0*****
+   ex) /T0******/B0*****
 
 <br/>
 <br/>
