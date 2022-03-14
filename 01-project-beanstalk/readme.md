@@ -44,7 +44,7 @@ Beanstalk으로 고가용성 Django 웹 애플리케이션 배포하기
    devsearch-project/devsearch/setting.py
 
    line 13-16.
-   # Beanstalk URL은 환경 생성 시 '임의 도메인.ap-northeast-1.elasticbeanstalk.com'으로 생성되니 미리 설정해요.
+   # Beanstalk URL은 환경 생성 시 '임의 도메인.ap-northeast-1.elasticbeanstalk.com'으로 생성되니 미리 설정
    # ex)test-django-project.ap-northeast-1.elasticbeanstalk.com
 
    ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'YourBeanstalkDomain.ap-northeast-1.elasticbeanstalk.com', 
