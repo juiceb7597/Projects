@@ -365,7 +365,7 @@ def lambda_handler(event, context):
         obj = s3.Object(s3_bucket, s3_key)
         # 'Body'값을 read로 읽고 bytes 반환, utf-8로 디코드 후 str 반환
         tweets_as_string = obj.get()['Body'].read().decode('utf-8') 
-        #'\n'으로 분리된 걸 ','로 치환, list 반환
+        #'\n'기준으로 분리, list 반환
         tweets = tweets_as_string.split('\n')
         
         for tweet_string in tweets:
@@ -395,7 +395,7 @@ def lambda_handler(event, context):
             firehose.put_record(
                 DeliveryStreamName=os.environ['TWEETS_STREAM'],
                 Record={
-                    # dic을 json형식의 str로 변환 후 저장
+                    # dic을 json형식의 str로 저장
                     'Data': json.dumps(tweets_record) + '\n'
                 }
             )
@@ -421,7 +421,7 @@ def lambda_handler(event, context):
             firehose.put_record(
                 DeliveryStreamName=os.environ['SENTIMENT_STREAM'],
                 Record={
-                    # dic을 json형식의 str로 변환 후 저장
+                    # dic을 json형식의 str로 저장
                     'Data': json.dumps(sentiment_record) + '\n'
                 }
             )
@@ -454,7 +454,7 @@ def lambda_handler(event, context):
                     firehose.put_record(
                         DeliveryStreamName=os.environ['ENTITY_STREAM'],
                         Record={
-                            # dic을 json형식의 str로 변환 후 저장
+                            # dic을 json형식의 str로 저장
                             'Data': json.dumps(entity_record) + '\n'
                         }
                     )
