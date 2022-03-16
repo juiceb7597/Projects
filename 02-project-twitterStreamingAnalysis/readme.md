@@ -24,42 +24,20 @@ Twitter Streaming 데이터를 분석하고 시각화 하기
    
    분석된 'entities', 'sentiment', raw 데이터에서 추출한 'tweets'를 Firehose로 보내요.
 
-   받은 데이터를 Glue Table을 지정하고 Parquet형태로 변환 후 Snappy로 압축해요. 
+   받은 데이터를 Glue Table을 지정하고 Parquet으로 변환 후 Snappy로 압축해요. 
    
    'tweets/', 'entities/', 'sentiment/' 접두사 폴더로 S3 버킷에 보내요.
 
    S3에 저장된 데이터를 Athena로 쿼리해요.
 
-   Athena에 저장된 테이블로 Quicksight 데이터셋을 만든 뒤 원하는 형태로 시각화해요.
+    Quicksight에서 Athena에 저장된 테이블로 데이터셋을 만든 뒤 원하는 형태로 시각화해요.
 
 <br/>
 <br/>
 <br/>
 <br/> 
 
-###  2. TwitterAPI용 Credential 생성
-   <br/>
-   
-   ![Alt text](./images/twitter-developer-credentials.jpg)
-<br/>
-  
-https://developer.twitter.com/en 
-
-Twitter Developer에서 회원가입을 해요.
-  
-  Developer Portal에서 APP을 만든 뒤 위와 같은 Consumer Key와 Authentication Tokens를 생성해요.
-<br/>
-<br/>
-
-  ![Alt text](./images/config_init.jpg)
-
-config.ini 파일에 입력 후 저장해요.
-<br/>
-<br/>
-<br/>
-<br/>
-
-###  3. Terraform 배포
+###  2. Terraform 배포
 
    sample
    <br/>
@@ -264,8 +242,30 @@ resource "aws_glue_catalog_table" "twitter_stream_sentiment_table" {
 
    terraform 폴더에서 terraform cli로 배포해요.
 
+<br/>
+<br/>
+<br/>
+<br/>
 
+###  3. TwitterAPI용 Credential 생성
 
+   <br/>
+   
+   ![Alt text](./images/twitter-developer-credentials.jpg)
+   
+<br/>
+  
+https://developer.twitter.com/en 
+
+Twitter Developer에서 회원가입을 해요.
+  
+  Developer Portal에서 APP을 만든 뒤 위와 같은 Consumer Key와 Authentication Tokens를 생성해요.
+<br/>
+<br/>
+
+  ![Alt text](./images/config_init.jpg)
+
+config.ini 파일에 입력 후 저장해요.
 <br/>
 <br/>
 <br/>
