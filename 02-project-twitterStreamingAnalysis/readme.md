@@ -259,7 +259,7 @@ https://developer.twitter.com/en
 
 Twitter Developer에서 회원가입을 해요.
   
-  Developer Portal에서 APP을 만든 뒤 위와 같은 Consumer Key와 Authentication Tokens를 생성해요.
+  Developer Portal에서 APP을 만들고 Consumer Key와 Authentication Tokens를 생성해요.
 <br/>
 <br/>
 
@@ -461,10 +461,8 @@ def lambda_handler(event, context):
 
     return 'true'
    ```
-
-   TwitterAPI에서 보낸 데이터를 Firehose를 통해 S3_raw 버킷에 저장해요.
-
-   S3_raw 버킷에 데이터가 저장되면 위의 lambda 함수가 트리거돼요.
+   
+  데이터가 S3_raw 버킷에 저장되면 lambda 함수가 트리거돼요.
 
 
 <br/>
