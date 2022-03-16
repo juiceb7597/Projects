@@ -18,9 +18,9 @@ Twitter Streaming 데이터를 분석하고 시각화 하기
 
    Firehose를 통해 S3 버킷에 저장해요.
 
-   S3 트리거로 Lambda를 실행해요.
+   S3 버킷 트리거로 Lambda를 실행해요.
    
-   S3 버킷에서 가져온 데이터를 Comprehend API로 구문을 분석해요.
+   Lambda에서 S3 버킷에서 데이터를 가져오고 Comprehend API로 구문을 분석해요.
    
    분석된 'entities', 'sentiment', raw 데이터에서 추출한 'tweets'를 Firehose로 보내요.
 
