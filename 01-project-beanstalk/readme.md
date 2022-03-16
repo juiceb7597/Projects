@@ -217,7 +217,7 @@ Route53에서 도메인에 호스팅해요.
 
 ![Alt text](./images/devsearch.JPG)
 
-고가용성 Django 웹 애플리케이션을 Beanstalk으로 배포하는데 성공했어요!!
+Beanstalk으로 고가용성 Django 웹 애플리케이션 배포에 성공했어요!!
 
 <br/>
 <br/>
