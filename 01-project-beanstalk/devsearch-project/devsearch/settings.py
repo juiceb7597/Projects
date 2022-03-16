@@ -15,10 +15,10 @@ DEBUG = True
 # 예)test-django-project.ap-northeast-1.elasticbeanstalk.com
 ALLOWED_HOSTS = ['localhost', '127.0.0.1','YourBeanstalkDomain.ap-northeast-1.elasticbeanstalk.com','.YourRoute53Domain.com']
 
-x="10.0.30."
-y="10.0.40."
-z="10.0.20."
-v="10.0.10."
+x="10.0.10."
+y="10.0.20."
+z="10.0.30."
+v="10.0.40."
 
 for i in range(256):
     ALLOWED_HOSTS.append(x+str(i))

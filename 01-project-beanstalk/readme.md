@@ -69,7 +69,7 @@ Beanstalk으로 고가용성 Django 웹 애플리케이션 배포하기
    AWS_STORAGE_BUCKET_NAME = 'YourAWSS3BucketName'
    ```
 
-   settting.py에서 허용 주소, 이메일, staticFiles용 s3버킷을 설정해요.
+   허용 주소, 이메일, staticFiles용 s3버킷을 설정해요.
 
    ```
    devsearch-project/projects/management/commands/createsu.py
@@ -150,7 +150,7 @@ Beanstalk 콘솔에서 환경을 생성해요.
    
    ![Alt text](./images/beanstalk_RDS_var.JPG)
 
-   RDS를 Django와 연결해요.
+   Django에 RDS를 연결해요.
 
    <br/>
    <br/>
@@ -181,9 +181,9 @@ Route53에서 도메인에 호스팅해요.
 
 등록된 도메인으로 호스팅 영역 생성
 
-레코드 생성 - 단순 레코드 정의 - 레코드 이름 www - 레코드 영역 A -
+레코드 생성 - 단순 레코드 정의 - 레코드 이름 설정 - 레코드 영역 A -
 
-엔트포인트 Beanstalk 별칭 - 도쿄 리전 - 환경 선택 - 단순 레코드 정의 
+엔드포인트 Beanstalk 별칭 - 도쿄 리전 - 환경 선택 - 단순 레코드 정의 
 
 
 <br/>
@@ -204,11 +204,11 @@ Route53에서 도메인에 호스팅해요.
 
    ![Alt text](./images/beanstalk_alb.JPG)
 
-   구성 - 로드밸런서 - 리스너에 https를 추가해요.
+   Beanstalk - 구성 - 로드밸런서 - 리스너에 https를 추가해요.
 
    ![Alt text](./images/http_to_https.jpg)
 
-   ec2 - 로드밸런서 - 리스너 - 편집에서 http를 https로 리디렉션해요.
+   EC2 - 로드밸런서 - 리스너 - 편집에서 http를 https로 리디렉션해요.
 
 <br/>
 <br/>
@@ -217,7 +217,7 @@ Route53에서 도메인에 호스팅해요.
 
 ![Alt text](./images/devsearch.JPG)
 
-Beanstalk으로 고가용성 Django 웹 애플리케이션 배포에 성공했어요!!
+고가용성 Django 웹 애플리케이션을 Beanstalk으로 배포하는데 성공했어요!!
 
 <br/>
 <br/>
