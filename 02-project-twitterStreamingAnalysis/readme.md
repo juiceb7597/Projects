@@ -28,9 +28,9 @@ Twitter Streaming 데이터를 분석하고 시각화 하기
    
    'tweets/', 'entities/', 'sentiment/' 접두사 폴더로 S3 버킷에 보내요.
 
-   S3에 저장된 데이터를 Athena로 쿼리해요.
-
-    Quicksight에서 Athena에 저장된 테이블로 데이터셋을 만들고 원하는 형태로 시각화해요.
+   S3에 저장된 데이터를 Athena로 쿼리해요
+   
+   Quicksight에서 Athena에 저장된 테이블로 데이터셋을 만들고 원하는 형태로 시각화해요.
 
 <br/>
 <br/>
