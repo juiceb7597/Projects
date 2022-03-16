@@ -353,7 +353,7 @@ s3 = boto3.resource('s3')
 # Boto3 Comprehend, Fireghose client
 comprehend = boto3.client('comprehend')
 firehose = boto3.client('firehose')
-# 엔티티용 정규표현식 digit, #, @ 시작-종료
+# 엔티티용 정규표현식 0-9, #, @
 entity_should_be_filtered = re.compile('^[\d#@]$')
 # 람다 핸들러
 def lambda_handler(event, context):
@@ -437,7 +437,7 @@ def lambda_handler(event, context):
             # 가져올 데이터 - detect_entities return 값
             seen_entities = []
             for entity in entities_response['Entities']:
-                # 숫자0-9,#,@ 1글자 엔티티 제외
+                # 0-9,#,@ 1글자 엔티티 제외
                 if (entity_should_be_filtered.match(entity['Text'])):
                     continue
                 # 중복 제거
