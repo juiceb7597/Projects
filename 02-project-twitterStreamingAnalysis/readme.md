@@ -12,15 +12,15 @@ Twitter Streaming 데이터를 분석하고 시각화 하기
 
    ![Alt text](./images/architecture.jpg)
 
-   Terraform으로 AWS 파이프라인을 구축해요.
+   Terraform으로 파이프라인을 구축해요.
 
    트위터 API로 실시간 데이터를 가져와요.
 
-   Firehose를 통해 데이터를 S3 버킷에 저장해요.
+   Firehose를 통해 S3 버킷에 저장해요.
 
    S3 트리거로 Lambda를 실행해요.
    
-   Lambda에선 S3에서 데이터를 가져오고 Comprehend API로 구문을 분석해요.
+   S3 버킷에서 데이터를 가져오고 Comprehend API로 구문을 분석해요.
    
    분석된 'entities', 'sentiment', raw 데이터에서 추출한 'tweets'를 Firehose로 보내요.
 
