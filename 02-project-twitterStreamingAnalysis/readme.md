@@ -12,7 +12,7 @@ Twitter Streaming 데이터를 분석하고 시각화 하기
 
    ![Alt text](./images/architecture.jpg)
 
-   Terraform으로 AWS 서비스를 구현해요.
+   Terraform으로 AWS 파이프라인을 구축해요.
 
    트위터 API로 실시간 데이터를 가져와요.
 
@@ -252,7 +252,7 @@ resource "aws_glue_catalog_table" "twitter_stream_sentiment_table" {
    <br/>
    
    ![Alt text](./images/twitter-developer-credentials.jpg)
-   
+
 <br/>
   
 https://developer.twitter.com/en 
