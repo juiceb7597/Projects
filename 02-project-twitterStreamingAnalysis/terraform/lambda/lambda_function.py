@@ -8,7 +8,7 @@ s3 = boto3.resource('s3')
 # Boto3 Comprehend, Fireghose client
 comprehend = boto3.client('comprehend')
 firehose = boto3.client('firehose')
-# 엔티티용 정규표현식 digit, #, @ 시작-종료
+# 엔티티용 정규표현식 0-9, #, @
 entity_should_be_filtered = re.compile('^[\d#@]$')
 # 람다 핸들러
 def lambda_handler(event, context):
