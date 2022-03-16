@@ -67,7 +67,7 @@ aws configure list
 aws --version
 rm -rf /opt/airflow/settings/awscliv2.zip
    ```
-   ./settings2.sh로 tweepy 라이브러리와 aws credential을 설정해요
+   ./settings2.sh로 tweepy 라이브러리를 설치하고 aws credential을 설정해요
 
 <br/>
 <br/>
