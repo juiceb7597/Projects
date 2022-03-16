@@ -395,7 +395,7 @@ def lambda_handler(event, context):
             firehose.put_record(
                 DeliveryStreamName=os.environ['TWEETS_STREAM'],
                 Record={
-                    # dic을 json형식의 str로 저장
+                    # dic을 json형식의 str로 반환
                     'Data': json.dumps(tweets_record) + '\n'
                 }
             )
@@ -421,7 +421,7 @@ def lambda_handler(event, context):
             firehose.put_record(
                 DeliveryStreamName=os.environ['SENTIMENT_STREAM'],
                 Record={
-                    # dic을 json형식의 str로 저장
+                    # dic을 json형식의 str로 반환
                     'Data': json.dumps(sentiment_record) + '\n'
                 }
             )
@@ -454,7 +454,7 @@ def lambda_handler(event, context):
                     firehose.put_record(
                         DeliveryStreamName=os.environ['ENTITY_STREAM'],
                         Record={
-                            # dic을 json형식의 str로 저장
+                            # dic을 json형식의 str로 반환
                             'Data': json.dumps(entity_record) + '\n'
                         }
                     )
