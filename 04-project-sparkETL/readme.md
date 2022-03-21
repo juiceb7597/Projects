@@ -208,10 +208,10 @@ https://www.udemy.com/course/tableau-for-beginners/
 
 Glue job script를 작성할 때 막힌 적이 있었어요.
 
-Databricks에서 테스트를 마친 코드였는데 에러가 나서 크게 좌절했어요.
+Databricks에서 테스트를 마친 코드였는데 에러가 나서 크게 좌절했죠.
 
 구글링으로도 해결이 안되서 기대없이 Stack Overflow에 질문을 했어요.
 
 https://stackoverflow.com/questions/71547278/can-i-convert-rdd-to-dataframe-in-glue/71547428#71547428
 
-답변에서 힌트를 얻고 결국 해결하는데 성공했어요!
+결국 답변에서 힌트를 얻고 해결하는데 성공했어요!
