@@ -31,6 +31,9 @@ AWS Glue job script로 비정형 데이터 ETL하기
    <br/>
 
   twitterAPI로 얻은 트윗의 Text
+  
+  sample
+  
    ```
   TUKANG SPILL TENTANG IDOL KOREA/TUKANG MANIPULASI DARI INDO YANG BERUBAH-UBAH IDENTITAS DAN MENYEBARKAN B…퓨마 엽서 일괄 양도 
 택포 3.5
