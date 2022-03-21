@@ -1,4 +1,4 @@
-Glue job으로 비정형 데이터 변형하기
+AWS Glue job script로 비정형 데이터 ETL하기
 =============
 ---
 ![Alt text](./images/glue_job.jpg)
@@ -18,7 +18,7 @@ Glue job으로 비정형 데이터 변형하기
 
    정리된 데이터를 S3에 저장하고 크롤러로 테이블을 만들어요.
 
-   테이블을 Athena로 쿼리하고 Tableu로 시각화해요.
+   테이블을 Athena로 쿼리하고 Tableua로 시각화해요.
 
 
 <br/>
@@ -26,7 +26,7 @@ Glue job으로 비정형 데이터 변형하기
 <br/>
 <br/> 
 
-###  2. 비정형 데이터 얻기
+###  2. twitterAPI로 비정형 데이터 얻기
    
    <br/>
 
@@ -82,6 +82,8 @@ def lambda_handler(event, context):
     }
    ```
 
+   twitterAPI로 얻은 데이터를 firehose를 통해 S3에 저장해요.
+
    S3 ObjectCreated로 Lambda를 트리거해요.
 
    Lamdba로 Glue job을 실행시켜요.
@@ -130,7 +132,7 @@ df = df.select("Entities","Count").groupBy("Entities").agg(max("Count").alias("C
 df.write.mode("append").parquet(finalFilePath)
    ```
 
-   Lambda에서 S3버킷과 저장된 파일 이름을 가져와요.
+   Lambda에서 S3버킷과 파일 이름을 가져와요.
 
    RDD로 파일을 읽고 flatMap으로 단어를 나눈 뒤 Count를 추가해요.
 
@@ -170,7 +172,7 @@ df.write.mode("append").parquet(finalFilePath)
 <br/>
 <br/> 
 
-###  7. Tableu로 시각화하기
+###  7. Tableua로 시각화하기
    
    <br/>
 
@@ -178,6 +180,7 @@ df.write.mode("append").parquet(finalFilePath)
 
    준비중이예요.
 
+   Tableua로 Athena에서 데이터셋을 가져오고 시각화해요.
 
    Glue job으로 ETL에 성공했어요!
 
@@ -201,11 +204,6 @@ https://www.udemy.com/course/tableau-for-beginners/
 
 ---
 
-<br/>
-<br/>
-<br/>
-<br/> 
-
 ### 여담
 
 Glue job script를 작성할 때 막힌 적이 있었어요.
@@ -217,7 +215,3 @@ Databricks에서 테스트를 마친 코드였는데 에러가 나서 크게 좌
 https://stackoverflow.com/questions/71547278/can-i-convert-rdd-to-dataframe-in-glue/71547428#71547428
 
 답변에서 힌트를 얻고 결국 해결하는데 성공했어요!
-
-개발자는 코드로 말한다고 해요.
-
-나라가 달라도 코드만 보고도 이해하는 IT가 정말 대단하다고 느꼈어요.
