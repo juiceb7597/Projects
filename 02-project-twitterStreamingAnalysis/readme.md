@@ -24,7 +24,7 @@ Twitter Streaming 데이터를 분석하고 시각화 하기
    
    분석된 'entities', 'sentiment', raw 데이터에서 추출한 'tweets'를 Firehose로 보내요.
 
-   받은 데이터를 Glue Table을 지정하고 Parquet으로 변환 후 Snappy로 압축해요. 
+   받은 데이터를 Firehose에서 Glue Table을 지정하고 Parquet으로 변환 후 Snappy로 압축해요. 
    
    'tweets/', 'entities/', 'sentiment/' 접두사 폴더로 S3 버킷에 보내요.
 
