@@ -43,17 +43,11 @@ Beanstalk으로 고가용성 Django 웹 애플리케이션 배포하기
    ```
    devsearch-project/devsearch/setting.py
 
-   line 13-16.
    # Beanstalk URL은 환경 생성 시 '임의 도메인.ap-northeast-1.elasticbeanstalk.com'으로 생성되니 미리 설정
-   # ex)test-django-project.ap-northeast-1.elasticbeanstalk.com
-
    ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'YourBeanstalkDomain.ap-northeast-1.elasticbeanstalk.com', 
    '.YourRoute53Domain.com']
 
-   line 175-182
    # 알림받을 이메일 설정
-   # google계정에서 - 보안 수준이 낮은 앱에 대한 액세스 허용
-
    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
    EMAIL_HOST = 'smtp.gmail.com'
    EMAIL_PORT = 587
@@ -61,9 +55,7 @@ Beanstalk으로 고가용성 Django 웹 애플리케이션 배포하기
    EMAIL_HOST_USER = 'YourEmail@gmail.com'
    EMAIL_HOST_PASSWORD = 'YourAppAccessPassword'
 
-   line 202-205
    # StaticFiles의 s3 버킷 경로 설정
-
    AWS_ACCESS_KEY_ID = 'YourAWSUSerAccessKeyID'
    AWS_SECRET_ACCESS_KEY = 'YourAWSUserAccessKey'
    AWS_STORAGE_BUCKET_NAME = 'YourAWSS3BucketName'
@@ -74,9 +66,7 @@ Beanstalk으로 고가용성 Django 웹 애플리케이션 배포하기
    ```
    devsearch-project/projects/management/commands/createsu.py
 
-   line 8-9
    # 인스턴스 실행 시 superuser 생성
-   
 class Command(BaseCommand):
 
     def handle(self, *args, **options):
