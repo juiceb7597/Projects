@@ -183,7 +183,13 @@ def athena_query_group():
   return athena_query_group
    ```
 
-   twitter_streaeming_dag를 실행해요.
+   twitterAPI 실행과 terraform은 BashOperator로 구현했어요.
+
+   twitterAPI는 Timeout으로 원하는 시간만큼만 실행해요.
+
+   AthenaOperator로 쿼리하고 S3버킷에 저장해요.
+
+   terraform destroy로 서비스를 정리하고 Slack에 메시지를 보내요.
 
 
 
