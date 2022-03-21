@@ -93,7 +93,7 @@ def lambda_handler(event, context):
 <br/>
 <br/> 
 
-###  4. Glue job으로 데이터 변형하기
+###  4. Glue job script로 ETL하기
    
    <br/>
 
