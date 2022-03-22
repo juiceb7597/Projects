@@ -78,7 +78,7 @@ rm -rf /opt/airflow/settings/awscliv2.zip
 
    ![Alt text](./images/variables_slack_channel.jpg)
 
-   Variables에서 slack_channel - channel명을 입력해요.
+   Variables에서 slack_channel - val에 channel명을 입력해요.
 
    ![Alt text](./images/aws_conn.jpg)
 
