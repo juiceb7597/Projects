@@ -3,7 +3,7 @@ import sys
 from pyspark import SparkConf, SparkContext
 from pyspark.sql import SparkSession
 from operator import add
-from pyspark.sql.functions import col, regexp_extract, max
+from pyspark.sql.functions import col, regexp_extract, max, regexp_replace
 from pyspark.sql.types import *
 
 conf = SparkConf().setAppName("Spark RDD")
@@ -23,8 +23,9 @@ schema = StructType([ StructField('rawEntities', StringType()),  StructField('Co
 
 rdd = sc.textFile(inputFilePath)
 rdd = rdd.flatMap(lambda x: x.split(" ")).map(lambda x : (x.split(" ")[0], 1)).reduceByKey(add)
-df = spark.createDataFrame(data=rdd, schema = schema)
-df = df.withColumn("Entities", regexp_extract(col("rawEntities"),'[^!".?@:,\'*…_()-|‘&♡—ㅡ’]+',0))
+df = rdd.toDF(schema=('rawEntities string, Count int'))
+df = df.withColumn("filtered_entities", regexp_extract(col("rawEntities"),'[^!:*.()\'ㅋ&—ㅡ’‘|"+,?-]+',0))
+df = df.withColumn('Entities', regexp_replace(col("filtered_entities"), '^[ㄱ-ㅎ가-힣0-9A-za-z]$', ''))
 df = df.filter(col("Entities") != "")
 df = df.select("Entities","Count").groupBy("Entities").agg(max("Count").alias("Count"))
 df.write.mode("append").parquet(finalFilePath)
