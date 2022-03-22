@@ -146,7 +146,7 @@ with DAG('twitter_streaming_dag', schedule_interval="0 1 * * *", default_args=de
    ```
 
    ```
-   dags/task_group,py
+   dags/task_group.py
 
    from airflow.models import DAG
 from airflow.providers.amazon.aws.operators.athena import AthenaOperator
