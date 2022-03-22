@@ -170,7 +170,7 @@ df.write.mode("append").parquet(finalFilePath)
 
    ![Alt text](./images/athena.jpg)
 
-   이모티콘은 생각을 못했네요!..
+   원하는 쿼리 실행해요!
 
 
    <br/>
