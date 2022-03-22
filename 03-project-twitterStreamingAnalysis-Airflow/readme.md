@@ -38,7 +38,7 @@ Airflow로 workflow를 스케쥴링하고 자동화하기
 
    ```
   settings/settings.sh
-   # aws cli, terraform cli 설치
+  aws cli, terraform cli 설치
 
   #!/bin/bash
 apt update && apt install unzip
@@ -54,7 +54,7 @@ su airflow
    ./settings.sh로 aws cli와 terrafrom cli를 설치해요
    ```
    settings/settings2.sh
-   # tweepy 라이브러리 설치, aws credential 설정
+   tweepy 라이브러리 설치, aws credential 설정
 
    #!/bin/bash
 pip install --upgrade pip && pip install tweepy
