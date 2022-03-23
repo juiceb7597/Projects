@@ -148,9 +148,13 @@ Beanstalk 콘솔에서 환경을 생성해요.
    구성 - 소프트웨어 - 환경속성
 
    RDS_HOSTNAME = RDS 엔드포인트
+
    RDS_PORT = RDS 포트
+
    RDS_DB_NAME = ebdb
+
    RDS_USERNAME = RDS Username
+   
    RDS_PASSWORD = RDS Password
 
 
