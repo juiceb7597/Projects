@@ -12,7 +12,7 @@ Twitter Streaming 데이터를 분석하고 시각화 하기
 
    ![Alt text](./images/architecture.jpg)
 
-   Terraform으로 파이프라인을 구축해요.
+   Terraform으로 AWS 서비스를 구축해요.
 
    트위터 API로 실시간 데이터를 가져와요.
 
