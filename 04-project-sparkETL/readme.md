@@ -15,7 +15,7 @@ AWS Glue job script로 비정형 데이터 ETL하기
 
    ![Alt text](./images/architecture.jpg)
 
-   TwitterAPI로 비정형 데이터를 얻고 Kinesis Firehose를 통해 S3에 저장해요.
+   TwitterAPI로 비정형 데이터를 얻고 Firehose를 통해 S3에 저장해요.
 
    Lambda로 Glue job을 트리거해요.
 
