@@ -1,7 +1,10 @@
 AWS Glue job script로 비정형 데이터 ETL하기
 =============
 ---
-![Alt text](./images/glue_job.jpg)
+
+![Alt text](./images/raw_data.jpg)
+
+![Alt text](./images/tableau.jpg)
 
 ---
 <br/>
@@ -45,6 +48,8 @@ AWS Glue job script로 비정형 데이터 ETL하기
 ...
    ```
 
+   BTS 키워드로 검색했어요.
+   
    트윗의 내용을 형식을 지정하지 않고 수집해요.
 
    <br/>
@@ -182,11 +187,9 @@ df.write.mode("append").parquet(finalFilePath)
    
    <br/>
 
-   <!-- ![Alt text](./images/architecture.jpg) -->
+   ![Alt text](./images/tableau.jpg)
 
-   준비중이예요.
-
-   Tableua로 Athena에서 데이터셋을 가져오고 시각화해요.
+   Tableua에 Athena를 연결하고 시각화해요.
 
    Glue job으로 ETL에 성공했어요!
 
