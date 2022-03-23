@@ -44,8 +44,7 @@ Beanstalk으로 고가용성 Django 웹 애플리케이션 배포하기
    devsearch-project/devsearch/setting.py
 
    # Beanstalk URL은 환경 생성 시 '임의 도메인.ap-northeast-1.elasticbeanstalk.com'으로 생성되니 미리 설정
-   ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'YourBeanstalkDomain.ap-northeast-1.elasticbeanstalk.com', 
-   '.YourRoute53Domain.com']
+   ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'YourBeanstalkDomain.ap-northeast-1.elasticbeanstalk.com', '.YourRoute53Domain.com']
 
    # 알림받을 이메일 설정
    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
