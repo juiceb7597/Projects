@@ -156,7 +156,7 @@ df.write.mode("append").parquet(finalFilePath)
 <br/>
 <br/> 
 
-###  5. Glue Crawler로 테이블을 만들기 
+###  5. Glue Crawler로 테이블 만들기 
 
    <br/>
 
