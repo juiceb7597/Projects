@@ -21,7 +21,7 @@ AWS Glue job script로 비정형 데이터 ETL하기
 
    변형된 데이터를 S3에 저장하고 크롤러로 테이블을 만들어요.
 
-   테이블을 Athena로 쿼리하고 Tableua로 시각화해요.
+   Athena로 쿼리하고 Tableua로 시각화해요.
 
 
 <br/>
