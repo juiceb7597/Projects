@@ -13,7 +13,7 @@ EKS로 Airflow 배포하기
 
    ![Alt text](./images/architecture.jpg)
 
-   수정될 수 있어요!
+   작성중이예요. 수정될 수 있어요!
 
 
 <br/>
@@ -145,6 +145,9 @@ https://www.udemy.com/course/apache-airflow-on-aws-eks-the-hands-on-guide/
 ---
 
 ### 선택사항
+
+<br/>
+<br/>
 
 1. NetworkPolicyProvider(agent) - calion
 
