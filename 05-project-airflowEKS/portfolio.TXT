@@ -1,0 +1,66 @@
+eksctl create cluster --name eks-demo-7 --nodegroup-name eks-demo-7-ng --version=1.21 --node-type=t3.small --nodes-max=6 --ssh-access --ssh-public-key=SPARK --asg-access --external-dns-access --alb-ingress-access
+eksctl utils associate-iam-oidc-provider --cluster eks-demo-7 --approve
+
+https://docs.aws.amazon.com/ko_kr/eks/latest/userguide/autoscaling.html
+curl -o cluster-autoscaler-autodiscover.yaml https://raw.githubusercontent.com/kubernetes/autoscaler/master/cluster-autoscaler/cloudprovider/aws/examples/cluster-autoscaler-autodiscover.yaml
+YourClusterName
+kubectl apply -f cluster-autoscaler-autodiscover.yaml
+kubectl -n kube-system annotate deployment.apps/cluster-autoscaler cluster-autoscaler.kubernetes.io/safe-to-evict="false" 
+kubectl -n kube-system edit deployment.apps/cluster-autoscaler
+--balance-similar-node-groups
+--skip-nodes-with-system-pods=false
+kubectl set image deployment cluster-autoscaler -n kube-system cluster-autoscaler=k8s.gcr.io/autoscaling/cluster-autoscaler:v1.21.2
+
+metric-server
+kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+
+prometheus
+kubectl create namespace prometheus
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm upgrade -i prometheus prometheus-community/prometheus --namespace prometheus --set alertmanager.persistentVolume.storageClass="gp2",server.persistentVolume.storageClass="gp2"
+kubectl --namespace=prometheus port-forward deploy/prometheus-server 9090
+
+https://grafana.com/docs/grafana/latest/installation/kubernetes/
+grafana.yaml type:ClusterIP
+kubectl create ns grafana
+kubectl apply -f grafana.yaml -n grafana
+kubectl port-forward service/grafana 3000:3000 -n grafana
+configuration - datasources - prometheus - url service/prometheus-server_cluster-IP:port - save & test
+create - import - 13770 load - 
+
+https://airflow.apache.org/docs/helm-chart/stable/index.html
+helm - airflow
+helm repo add apache-airflow https://airflow.apache.org
+helm upgrade --install airflow apache-airflow/airflow --namespace airflow --create-namespace
+
+https://docs.aws.amazon.com/ko_kr/eks/latest/userguide/aws-load-balancer-controller.html
+helm repo add eks https://aws.github.io/eks-charts
+helm install aws-load-balancer-controller eks/aws-load-balancer-controller --set clusterName=my-cluster -n kube-system
+
+(Optional)
+networkPolicyProvider(agent) - calion
+https://docs.aws.amazon.com/ko_kr/eks/latest/userguide/calico.html
+helm repo add projectcalico https://docs.projectcalico.org/charts
+helm install calico projectcalico/tigera-operator --version v3.21.4
+kubectl get all -n tigera-operator
+kubectl port-forward service/management-ui -n management-ui 9001
+
+(Optional)
+kubecost
+https://www.kubecost.com/install#show-instructions
+kubectl create namespace kubecost
+helm repo add kubecost https://kubecost.github.io/cost-analyzer/
+helm install kubecost kubecost/cost-analyzer --namespace kubecost --set kubecostToken="ZHNhZGFzZGFkc0Bhc2RzZGE=xm343yadf98"
+kubectl port-forward --namespace kubecost deployment/kubecost-cost-analyzer 9090
+
+(Optional)
+argo
+https://argo-cd.readthedocs.io/en/stable/getting_started/#2-download-argo-cd-cli
+kubectl create namespace argocd
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+choco install argocd-cli
+kubectl port-forward svc/argocd-server -n argocd 8080:443
+kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}"
+ID=admin, Password=decoded~~
+newApp-project:defalt-RepogitoryURL:githubRepo-path:./-ClusterURL=https://kubernetes.default.svc-Namespace:default
+Sync
