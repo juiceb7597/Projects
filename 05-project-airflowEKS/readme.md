@@ -77,7 +77,7 @@ managedNodeGroups:
 <br/>
 <br/> 
 
-###  3. Cluster Autoscaler, ALB-Controller, Fluentbit 설정
+###  3. Cluster Autoscaler, ALB-Controller 설정
    
    <br/>
    
