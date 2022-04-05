@@ -132,7 +132,7 @@ flux check로 실행해도 되는지 확인해요.
 <br/>
 <br/> 
 
-###  5. Prometheus, Grafana 설치 후 연동
+###  5. Prometheus, Grafana 연동
    
    <br/>
 
@@ -159,7 +159,7 @@ spec:
   kubectl --namespace=prometheus port-forward deploy/prometheus-server 9090
   ```
 
-   UI에서 Target을 확인해요.
+   Prometheus UI에서 Target을 확인해요.
 
    ![Alt text](./images/prometheus.jpg)   
 
@@ -193,7 +193,7 @@ configuration - datasources - prometheus - url service/prometheus-server_cluster
 create - import - 13770 load
    ```
 
- UI에서 데이터소스로 Prometheus를 설정해요.
+ Grafana UI에서 데이터소스로 Prometheus를 설정해요.
 
    원하는 대쉬보드로 클러스터를 모니터링해요.
 
