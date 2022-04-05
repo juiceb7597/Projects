@@ -19,7 +19,7 @@ EKS로 Airflow 배포하기
 
    ALB로 Airflow UI를 외부에 노출해요.
 
-   로그를 Fluentbit로 Cloudwatch에 보내고 S3에 저장해요.
+   Fluentbit로 로그를 Cloudwatch에 보내고 S3에 저장해요.
 
    Prometheus 지표를 Grafana로 모니터링해요. 
 
