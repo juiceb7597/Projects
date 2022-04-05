@@ -305,7 +305,7 @@ kubectl port-forward service/management-ui -n management-ui 9001
 
   <br/>
 
-  1. kubecost
+  2. kubecost
 
 ```
 https://www.kubecost.com/install#show-instructions
@@ -322,7 +322,7 @@ kubectl port-forward --namespace kubecost deployment/kubecost-cost-analyzer 9090
 
   <br/>
 
-1. Argo
+3. Argo
 
 ```
 https://argo-cd.readthedocs.io/en/stable/getting_started/
