@@ -77,7 +77,7 @@ managedNodeGroups:
 <br/>
 <br/> 
 
-###  3. Cluster Autoscaler, ALB-Controller 설정
+###  3. Cluster Autoscaler, ALB-Controller, Fluentbit 설정
    
    <br/>
    
@@ -123,7 +123,7 @@ flux bootstrap github \
   --personal
 ```
 
-flux check로 한 번 확인한 뒤
+flux check로 실행해도 되는지 확인해요.
 
 클러스터에 flux를 배포해요.
 
@@ -163,7 +163,8 @@ spec:
 
    ![Alt text](./images/prometheus.jpg)   
 
-   <br/>
+   ---
+<br/>
 
    ```
    grafana/helm-release-grafana.yaml
@@ -194,7 +195,7 @@ create - import - 13770 load
 
  UI에서 데이터소스로 Prometheus를 설정해요.
 
-   원하는 대쉬보드로 모니터링해요.
+   원하는 대쉬보드로 클러스터를 모니터링해요.
 
    ![Alt text](./images/grafana.jpg)   
 
