@@ -27,7 +27,7 @@ EKS로 Airflow 배포하기
 
 
    ```
-   cluster.yml
+   cluster.yaml
 
    apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
