@@ -167,7 +167,7 @@ spec:
   kubectl --namespace=prometheus port-forward deploy/prometheus-server 9090
   ```
 
-   Prometheus UI에서 Target을 확인해요.
+   Prometheus UI에서 Targets로 지표를 확인해요.
 
    ![Alt text](./images/prometheus.jpg)   
 
