@@ -281,9 +281,8 @@ https://www.udemy.com/course/apache-airflow-on-aws-eks-the-hands-on-guide/
 
 <br/>
 <br/>
-1. NetworkPolicyProvider(agent) - calion
 
-  <br/>
+1. NetworkPolicyProvider(agent) - calion
 
 ```
 https://docs.aws.amazon.com/ko_kr/eks/latest/userguide/calico.html
@@ -297,9 +296,8 @@ kubectl port-forward service/management-ui -n management-ui 9001
 포드간 연결을 제어할 경우 NetworkPolicyProvider를 설치해요.
 
   <br/>
-  2. kubecost
 
-  <br/>
+  1. kubecost
 
 ```
 https://www.kubecost.com/install#show-instructions
@@ -315,9 +313,8 @@ kubectl port-forward --namespace kubecost deployment/kubecost-cost-analyzer 9090
 ![Alt text](./images/kubecost_dashboard.jpg)
 
   <br/>
-3. Argo
 
-  <br/>
+1. Argo
 
 ```
 https://argo-cd.readthedocs.io/en/stable/getting_started/
