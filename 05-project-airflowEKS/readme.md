@@ -25,18 +25,45 @@ EKS로 Airflow 배포하기
 
    <br/>
 
+
    ```
-   eksctl create cluster --name yourClusterName \
-   --version=1.21 \
-   --node-type=t3.small \
-   --nodegroup-name yourNodegroupName \
-  --nodes-max=6 \
-  --ssh-access \
-  --ssh-public-key=yourKeyPair \
-  --asg-access \
-  --external-dns-access \
-  --alb-ingress-access
-eksctl utils associate-iam-oidc-provider --cluster yourClusterName --approve
+   cluster.yml
+
+   apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: airflow
+  region: ap-northeast-2
+  version: "1.21"
+
+managedNodeGroups:
+  - name: airflow-ng
+    instanceType: t3.medium
+    privateNetworking: true
+    minSize: 2
+    maxSize: 4
+    desiredCapacity: 2
+    volumeSize: 20
+    ssh:
+      allow: true
+      publicKeyName: YourClusterKeypair
+    labels: { role: worker }
+    tags:
+      nodegroup-role: worker
+    iam:
+      withAddonPolicies:
+        ebs: true
+        imageBuilder: true
+        efs: true
+        albIngress: true
+        autoScaler: true
+        cloudWatch: true
+        externalDNS: true
+   ```
+   
+   ```
+   eksctl utils associate-iam-oidc-provider --cluster airflow --approve
    ```
    
    노드그룹과 함께 EKS 클러스터를 만들어요.
@@ -86,7 +113,6 @@ ALB-Controller를 배포해요 이후 Ingress를 사용할 거예요.
    <br/>
 
    ```
-   prometheus
 kubectl create namespace prometheus
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm upgrade -i prometheus prometheus-community/prometheus --namespace prometheus --set alertmanager.persistentVolume.storageClass="gp2",server.persistentVolume.storageClass="gp2"
@@ -96,11 +122,98 @@ kubectl --namespace=prometheus port-forward deploy/prometheus-server 9090
 
    UI에서 Target을 확인해요.
 
-   ![Alt text](./images/architecture.jpg)   
+   ![Alt text](./images/prometheus.jpg)   
+
+   <br/>
+
+   ```
+   grafana.yml
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: grafana-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: grafana
+  name: grafana
+spec:
+  selector:
+    matchLabels:
+      app: grafana
+  template:
+    metadata:
+      labels:
+        app: grafana
+    spec:
+      securityContext:
+        fsGroup: 472
+        supplementalGroups:
+          - 0
+      containers:
+        - name: grafana
+          image: grafana/grafana:8.4.4
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3000
+              name: http-grafana
+              protocol: TCP
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /robots.txt
+              port: 3000
+              scheme: HTTP
+            initialDelaySeconds: 10
+            periodSeconds: 30
+            successThreshold: 1
+            timeoutSeconds: 2
+          livenessProbe:
+            failureThreshold: 3
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            successThreshold: 1
+            tcpSocket:
+              port: 3000
+            timeoutSeconds: 1
+          resources:
+            requests:
+              cpu: 250m
+              memory: 750Mi
+          volumeMounts:
+            - mountPath: /var/lib/grafana
+              name: grafana-pv
+      volumes:
+        - name: grafana-pv
+          persistentVolumeClaim:
+            claimName: grafana-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: grafana
+spec:
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 3000
+  selector:
+    app: grafana
+  sessionAffinity: None
+  type: ClusterIP
+   ```
 
 
    ```
-grafana.yaml type:ClusterIP
 kubectl create ns grafana
 kubectl apply -f grafana.yaml -n grafana
 kubectl port-forward service/grafana 3000:3000 -n grafana
@@ -109,13 +222,13 @@ create - import - 13770 load -
    ```
    https://grafana.com/docs/grafana/latest/installation/kubernetes/
 
-   grafana.yaml 파일의 type을 NodePort에서 ClusterIP로 수정해요.
+   grafana 네임스페이스를 만든 뒤 yaml파일로 배포해요.
 
    UI에서 데이터소스로 Prometheus를 설정해요.
 
    원하는 대쉬보드로 모니터링해요.
 
-   ![Alt text](./images/architecture.jpg)   
+   ![Alt text](./images/grafana.jpg)   
 
 <br/>
 <br/>
@@ -198,7 +311,7 @@ https://argo-cd.readthedocs.io/en/stable/getting_started/
 
 Flux대신 Argo를 사용할 때 설치해요.
 
-![Alt text](./images/kubecost_dashboard.jpg)
+![Alt text](./images/argo.jpg)
 
 
 
