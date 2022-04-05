@@ -15,7 +15,7 @@ EKS로 Airflow 배포하기
 
    작성중이예요. 수정될 수 있어요!
 
-   GitOps를 활용해 배포해요.
+   Flux로 EKS에 배포해요.
 
    ALB로 Airflow UI를 외부에 노출해요.
 
