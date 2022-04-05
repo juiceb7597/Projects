@@ -1,0 +1,28 @@
+fernetKey: "mWKHnpIaV5zRMDshi6VFmtkJf5w5bVSx5GH_Ds8rYoA="
+env:
+  - name: "AIRFLOW__KUBERNETES__DAGS_IN_IMAGE"
+    value: "False"
+  - name: "AIRFLOW__KUBERNETES__NAMESPACE"
+    value: "airflow"
+  - name: "AIRFLOW__KUBERNETES__WORKER_CONTAINER_REPOSITORY"
+    value: "apache/airflow"
+  - name: "AIRFLOW__KUBERNETES__WORKER_CONTAINER_TAG"
+    value: "1.10.10.1-alpha2-python3.7"
+  - name: "AIRFLOW__KUBERNETES__RUN_AS_USER"
+    value: "50000"
+  - name: "AIRFLOW__CORE__LOAD_EXAMPLES"
+    value: "False"
+executor: "KubernetesExecutor"
+dags:
+  persistence:
+    enabled: false
+gitSync:
+  enabled: true
+  # repo: https://github.com/juiceb7597/airflow-eks-config.git
+  repo: git@github.com:juiceb7597/airflow-eks-config.git
+  branch: main
+  maxFailures: 0
+  subPath: ""
+  wait: 60
+  sshKeySecret: airflow-git-private-dags
+  # kubectl create secret generic airflow-git-private-dags -n airflow --from-file=gitSshKey=./private-github
