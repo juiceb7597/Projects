@@ -111,7 +111,7 @@ helm repo add eks https://aws.github.io/eks-charts
 helm install aws-load-balancer-controller eks/aws-load-balancer-controller --set clusterName=yourClusterName -n kube-system
 ```
 
-ALB-Controller를 배포해요 이후 Ingress를 사용할 거예요.
+Ingress용 ALB-Controller를 배포해요
 
 <br/>
 <br/>
