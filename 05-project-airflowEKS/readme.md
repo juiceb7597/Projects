@@ -58,7 +58,7 @@ managedNodeGroups:
       publicKeyName: YourClusterKeypair
     labels: { role: worker }
     tags:
-      nodegroup-role: worker
+      nodegroup-role: YourNodegroup
     iam:
       withAddonPolicies:
         ebs: true
@@ -76,7 +76,7 @@ managedNodeGroups:
    
    노드그룹과 함께 EKS 클러스터를 만들어요.
    
-   오토스케일링과 ALB 권한도 추가해요.
+   오토스케일링과 ALB Ingress 권한도 추가해요.
 
    추가로 클러스터에 oidc 자격 증명 공급자를 생성해요.
   
