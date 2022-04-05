@@ -293,7 +293,7 @@ kubectl get all -n tigera-operator
 kubectl port-forward service/management-ui -n management-ui 9001
 ```
 
-포드간 연결을 제어할 경우 NetworkPolicyProvider를 설치해요.
+포드간 연결을 제어할 경우 NetworkPolicyProvider를 배포해요.
 
   <br/>
 
@@ -308,7 +308,7 @@ helm install kubecost kubecost/cost-analyzer --namespace kubecost --set kubecost
 kubectl port-forward --namespace kubecost deployment/kubecost-cost-analyzer 9090
 ```
 
-비용을 관리하고 싶을 때 kubecost를 설치해요.
+비용을 관리하고 싶을 때 kubecost를 배포해요.
 
 ![Alt text](./images/kubecost_dashboard.jpg)
 
@@ -329,7 +329,7 @@ newApp-project:defalt-RepogitoryURL:githubRepo-path:./-ClusterURL=https://kubern
 Sync
 ```
 
-Flux대신 Argo를 사용할 때 설치해요.
+Flux대신 Argo를 사용할 때 배포해요.
 
 ![Alt text](./images/argo.jpg)
 
