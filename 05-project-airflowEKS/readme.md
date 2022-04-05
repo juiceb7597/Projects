@@ -15,6 +15,14 @@ EKS로 Airflow 배포하기
 
    작성중이예요. 수정될 수 있어요!
 
+   GitOps를 활용해 배포해요.
+
+   로드밸런서로 UI를 외부에 노출해요.
+
+   로그를 Fluentbit로 Cloudwatch에 보내고 S3에 저장해요.
+
+   Prometheus 지표를 Grafana로 모니터링해요. 
+
 
 <br/>
 <br/>
