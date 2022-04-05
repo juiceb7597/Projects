@@ -17,7 +17,7 @@ EKS로 Airflow 배포하기
 
    GitOps를 활용해 배포해요.
 
-   로드밸런서로 UI를 외부에 노출해요.
+   ALB로 Airflow UI를 외부에 노출해요.
 
    로그를 Fluentbit로 Cloudwatch에 보내고 S3에 저장해요.
 
