@@ -13,13 +13,13 @@ EKS로 Airflow 배포하기
 
    ![Alt text](./images/architecture.jpg)
 
-   작성중이예요. 수정될 수 있어요!
-
    Flux로 k8s 리소스를 EKS에 배포해요.
 
    ALB로 Airflow UI를 외부에 노출해요.
 
-   Fluentbit로 로그를 Cloudwatch에 보내고 S3에 저장해요.
+   데이터베이스로 RDS를 사용해요.
+
+   Dag의 Logs를 S3에 저장해요.
 
    Prometheus 지표를 Grafana로 모니터링해요. 
 
@@ -61,8 +61,6 @@ managedNodeGroups:
       nodegroup-role: YourNodegroup
     iam:
       withAddonPolicies:
-        ebs: true
-        imageBuilder: true
         albIngress: true
         autoScaler: true
         cloudWatch: true
@@ -121,9 +119,7 @@ flux bootstrap github \
   --personal
 ```
 
-flux check로 실행해도 되는지 확인해요.
-
-클러스터에 flux를 배포해요.
+클러스터에 Flux를 배포해요.
 
 <br/>
 <br/>
@@ -250,16 +246,16 @@ dags:
 extraSecrets:
   airflow-ssh-secret:
     data: |
-      gitSshKey: LS0tLS~~
+      gitSshKey: ~~
    ```
 
   helm으로 values 환경설정 값과 함께 배포해요.
 
-  Git-sync로 dag를 github repo에서 가져와요.
-
-  dag로그를 S3 버킷에 저장해요.
+  Git-sync로 Dag를 Github repo에서 가져와요.
 
   Connection으로 MyS3Conn을 만들어 줘요.
+
+  Dag의 Logs를 S3 버킷에 저장해요.
 
   <br/>
 <br/>
@@ -309,12 +305,19 @@ spec:
 
   ![Alt text](./images/airflowUI-alb.jpg)  
 
+  <br/>
+<br/>
+<br/>
+<br/> 
+
 
 ###  8. AWS RDS 연결
    
    <br/>
 
    ```
+  values.yaml
+
    postgresql:
   enabled: false
 data:
@@ -367,6 +370,11 @@ https://www.udemy.com/course/apache-airflow-on-aws-eks-the-hands-on-guide/
 
 ---
 
+<br/>
+<br/>
+<br/>
+<br/> 
+
 ### 선택사항
 
 <br/>
@@ -387,7 +395,7 @@ kubectl port-forward service/management-ui -n management-ui 9001
 
   <br/>
 
-  2. kubecost
+  2. Kubecost
 
 ```
 https://www.kubecost.com/install#show-instructions
@@ -398,7 +406,7 @@ helm install kubecost kubecost/cost-analyzer --namespace kubecost --set kubecost
 kubectl port-forward --namespace kubecost deployment/kubecost-cost-analyzer 9090
 ```
 
-비용을 관리하고 싶을 때 kubecost를 배포해요.
+비용을 관리하고 싶을 때 Kubecost를 배포해요.
 
 ![Alt text](./images/kubecost_dashboard.jpg)
 
