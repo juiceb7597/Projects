@@ -14,6 +14,8 @@ EKS로 Airflow 배포하기
    ![Alt text](./images/architecture.jpg)
 
    Flux로 k8s 리소스를 EKS에 배포해요.
+   
+   Git-Sync로 Dags 파일을 Github Repo에서 가져와요
 
    ALB로 Airflow UI를 외부에 노출해요.
 
