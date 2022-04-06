@@ -85,7 +85,7 @@ managedNodeGroups:
 <br/>
 <br/> 
 
-###  3. Cluster Autoscaler, ALB-Controller 설정
+###  3. Cluster Autoscaler 설정
    
    <br/>
    
@@ -103,15 +103,6 @@ kubectl set image deployment cluster-autoscaler -n kube-system cluster-autoscale
   ```
   
 Pod 수에 따라 노드가 추가되게끔 오토스케일러를 설정해요.
-
-```
-https://docs.aws.amazon.com/ko_kr/eks/latest/userguide/aws-load-balancer-controller.html
-
-helm repo add eks https://aws.github.io/eks-charts
-helm install aws-load-balancer-controller eks/aws-load-balancer-controller --set clusterName=yourClusterName -n kube-system
-```
-
-Ingress용 ALB-Controller를 배포해요
 
 <br/>
 <br/>
@@ -219,6 +210,7 @@ create - import - 13770 load
    ```
    helm install airflow apache-airflow/airflow --version 1.5.0 \
    --namespace airflow --create-namespace --values ./values.yaml
+   kubectl port-forward service/airflow-webserver 8080 -n airflow
    ```
 
    ```
@@ -227,7 +219,7 @@ create - import - 13770 load
    fernetKey: "mWKHnpIaV5zRMDshi6VFmtkJf5w5bVSx5GH_Ds8rYoA="
 env:
   - name: "AIRFLOW__KUBERNETES__DAGS_IN_IMAGE"
-    value: "False"
+    value: "True"
   - name: "AIRFLOW__KUBERNETES__NAMESPACE"
     value: "airflow"
   - name: "AIRFLOW__KUBERNETES__WORKER_CONTAINER_REPOSITORY"
@@ -238,41 +230,134 @@ env:
     value: "50000"
   - name: "AIRFLOW__CORE__LOAD_EXAMPLES"
     value: "False"
+  - name: "AIRFLOW__CORE__REMOTE_LOGGING"
+    value: "True"
+  - name: "AIRFLOW__CORE__REMOTE_LOG_CONN_ID"
+    value: "MyS3Conn"
+  - name: "AIRFLOW__CORE__REMOTE_BASE_LOG_FOLDER"
+    value: "s3://bucketName/logs"
+  - name: "AIRFLOW__CORE__EXPOSE_CONFIG"
+    value: "True"
 executor: "KubernetesExecutor"
 dags:
   persistence:
     enabled: false
-gitSync:
-  enabled: true
-  repo: https://github.com/username/yourGithubRepo.git
-  branch: main
-  maxFailures: 0
-  subPath: ""
-  wait: 60
+  gitSync:
+    enabled: true
+    repo: ssh://git@github.com/username/repo.git
+    branch: main
+    subPath: ""
+    wait: 60
+    sshKeySecret: airflow-ssh-secret
+extraSecrets:
+  airflow-ssh-secret:
+    data: |
+      gitSshKey: LS0tLS~~
    ```
 
-  helm cli로 values 값과 함께 배포해요.
+  helm으로 values 환경설정 값과 함께 배포해요.
 
-  airflow 폴더는 참고용으로 넣어뒀어요.
+  giysync로 dag를 github repo에서 가져와요.
+
+  dag로그를 S3 버킷에 저장해요.
+
+  Connection으로 MyS3Conn을 만들어 줘요.
 
   <br/>
 <br/>
 <br/>
 <br/> 
 
-###  7. 작성중
+###  7. Ingress로 Airflow UI 노출
+   
+   <br/>
+
+  ```
+    kubectl edit svc airflow-webserver -n airflow
+    ClusterIP -> NodePort
+    kubectl apply -f ingress.yaml -n airflow
+  ```
+
+  ```
+  ingress.yaml
+
+  apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  namespace: airflow
+  name: airflow-ingress
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/success-codes: 200,302
+spec:
+  ingressClassName: alb
+  rules:
+    - http:
+        paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: airflow-webserver
+              port:
+                number: 8080
+  ```
+
+  airflow-webserver 서비스 타입을 ClusterIP에서 NodePort로 변경해요.
+
+  ingress를 배포해서 로드밸런서를 생성해요.
+
+  로드밸런서 DNS로 접속해서 UI를 확인해요
+
+  ![Alt text](./images/airflowUI-alb.jpg)  
+
+
+###  8. AWS RDS 연결
    
    <br/>
 
    ```
+   postgresql:
+  enabled: false
+data:
+  metadataConnection:
+    user: RDSUsername
+    pass: RDSPassword
+    host: RDSEndpoint
+    port: 5432
+    db : ~
+   ```
 
    ```
+   helm upgrade -f values.yaml airflow apache-airflow/airflow -n airflow
+   airflow create_user -r Admin -u admin -e admin@admin.com -f admin -l admin -p admin
+   ```
+
+   RDS를 생성한 뒤 values파일에 값을 추가해요.
+
+   데이터베이스가 바뀌었으므로 airflow webserver 컨테이너에서 admin 계정을 생성해요.
+
+   RDS는 EKS와 같은 VPC, Security Group을 사용해요.
 
 
 <br/>
 <br/>
 <br/>
 <br/> 
+
+###  8. AWS RDS 연결
+   
+   <br/>
+
+  작성중이예요.
+
+  <br/>
+<br/>
+<br/>
+<br/> 
+
+
 
 참고 강의
 

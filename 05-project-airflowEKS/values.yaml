@@ -1,7 +1,7 @@
 fernetKey: "mWKHnpIaV5zRMDshi6VFmtkJf5w5bVSx5GH_Ds8rYoA="
 env:
   - name: "AIRFLOW__KUBERNETES__DAGS_IN_IMAGE"
-    value: "False"
+    value: "True"
   - name: "AIRFLOW__KUBERNETES__NAMESPACE"
     value: "airflow"
   - name: "AIRFLOW__KUBERNETES__WORKER_CONTAINER_REPOSITORY"
@@ -12,17 +12,35 @@ env:
     value: "50000"
   - name: "AIRFLOW__CORE__LOAD_EXAMPLES"
     value: "False"
+  - name: "AIRFLOW__CORE__REMOTE_LOGGING"
+    value: "True"
+  - name: "AIRFLOW__CORE__REMOTE_LOG_CONN_ID"
+    value: "MyS3Conn"
+  - name: "AIRFLOW__CORE__REMOTE_BASE_LOG_FOLDER"
+    value: "s3://bucketName/logs"
+  - name: "AIRFLOW__CORE__EXPOSE_CONFIG"
+    value: "True"
 executor: "KubernetesExecutor"
 dags:
   persistence:
     enabled: false
-gitSync:
-  enabled: true
-  # repo: https://github.com/juiceb7597/airflow-eks-config.git
-  repo: git@github.com:juiceb7597/airflow-eks-config.git
-  branch: main
-  maxFailures: 0
-  subPath: ""
-  wait: 60
-  sshKeySecret: airflow-git-private-dags
-  # kubectl create secret generic airflow-git-private-dags -n airflow --from-file=gitSshKey=./private-github
+  gitSync:
+    enabled: true
+    repo: ssh://git@github.com/username/repo.git
+    branch: main
+    subPath: ""
+    wait: 60
+    sshKeySecret: airflow-ssh-secret
+extraSecrets:
+  airflow-ssh-secret:
+    data: |
+      gitSshKey: LS0tLS~~
+# postgresql:
+#   enabled: false
+# data:
+#   metadataConnection:
+#     user: RDSUsername
+#     pass: RDSPassword
+#     host: RDSEndpoint
+#     port: 5432
+#     db : ~
