@@ -15,7 +15,7 @@ EKS로 Airflow 배포하기
 
    작성중이예요. 수정될 수 있어요!
 
-   Flux로 EKS에 배포해요.
+   Flux로 k8s 리소스를 EKS에 배포해요.
 
    ALB로 Airflow UI를 외부에 노출해요.
 
@@ -63,7 +63,6 @@ managedNodeGroups:
       withAddonPolicies:
         ebs: true
         imageBuilder: true
-        efs: true
         albIngress: true
         autoScaler: true
         cloudWatch: true
@@ -208,8 +207,7 @@ create - import - 13770 load
    <br/>
 
    ```
-   helm install airflow apache-airflow/airflow --version 1.5.0 \
-   --namespace airflow --create-namespace --values ./values.yaml
+   helm install airflow apache-airflow/airflow --version 1.5.0 --namespace airflow --create-namespace --values ./values.yaml
    kubectl port-forward service/airflow-webserver 8080 -n airflow
    ```
 
@@ -257,7 +255,7 @@ extraSecrets:
 
   helm으로 values 환경설정 값과 함께 배포해요.
 
-  giysync로 dag를 github repo에서 가져와요.
+  Git-sync로 dag를 github repo에서 가져와요.
 
   dag로그를 S3 버킷에 저장해요.
 
@@ -274,7 +272,6 @@ extraSecrets:
 
   ```
     kubectl edit svc airflow-webserver -n airflow
-    ClusterIP -> NodePort
     kubectl apply -f ingress.yaml -n airflow
   ```
 
@@ -306,9 +303,9 @@ spec:
 
   airflow-webserver 서비스 타입을 ClusterIP에서 NodePort로 변경해요.
 
-  ingress를 배포해서 로드밸런서를 생성해요.
+  ingress를 배포해서 ALB를 생성해요.
 
-  로드밸런서 DNS로 접속해서 UI를 확인해요
+  ALB DNS로 접속해서 UI를 확인해요
 
   ![Alt text](./images/airflowUI-alb.jpg)  
 
@@ -346,7 +343,7 @@ data:
 <br/>
 <br/> 
 
-###  8. AWS RDS 연결
+###  9.
    
    <br/>
 
