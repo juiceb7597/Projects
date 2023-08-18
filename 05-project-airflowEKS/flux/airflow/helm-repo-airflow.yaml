@@ -1,9 +1,0 @@
----
-apiVersion: source.toolkit.fluxcd.io/v1beta2
-kind: HelmRepository
-metadata:
-  name: apache-airflow
-  namespace: airflow
-spec:
-  interval: 1m0s
-  url: https://airflow.apache.org
